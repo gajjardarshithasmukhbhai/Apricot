@@ -13,7 +13,7 @@ namespace Apricot.Web.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201404031320256_Init"; }
+            get { return "201404051703463_Init"; }
         }
         
         string IMigrationMetadata.Source
