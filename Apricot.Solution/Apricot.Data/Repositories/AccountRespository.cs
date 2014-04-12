@@ -12,10 +12,16 @@ namespace Apricot.Data.Repositories
     public class AccountRespository
     {
         private readonly ApricotContext _context;
-        AccountRespository(ApricotContext context)
+       
+        /// <summary>
+        /// Constructor or Account Repository
+        /// </summary>
+        /// <param name="context">Accepts context of the Application</param>
+        /// <exception cref="">ArgumentNullException if context is NULL</exception>
+        public AccountRespository(ApricotContext context)
         {
             if (context == null)
-                throw new NullReferenceException();
+                throw new ArgumentNullException("context");
 
             _context = context;
         }
@@ -39,7 +45,7 @@ namespace Apricot.Data.Repositories
         public Account GetByAccountNumber(Int64 AccountNumber)
         {
             if (AccountNumber == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Account Number");
 
             Account account = null;
             try
@@ -64,7 +70,7 @@ namespace Apricot.Data.Repositories
         public bool AddAccount(Account account)
         {
             if (account == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("account");
 
             //Check Whether Account to be Unique or not in terms or 'Account Number'
             if (!UniqueAccount(account))
@@ -107,7 +113,7 @@ namespace Apricot.Data.Repositories
         public bool DeleteAccount(Account account)
         {
             if (account == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("account");
 
             Account accnt = _context.Accounts.Remove(account);
             if (accnt != null)
