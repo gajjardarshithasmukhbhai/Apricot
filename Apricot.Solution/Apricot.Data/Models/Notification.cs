@@ -25,6 +25,9 @@ namespace Apricot.Data.Models
         public String Ntf_Body { get; set; }
 
         [Required]
+        public Boolean Seen { get; set; }
+
+        [Required]
         public Int64 Emp_ID { get; set; }
 
         [ForeignKey("Emp_ID")]

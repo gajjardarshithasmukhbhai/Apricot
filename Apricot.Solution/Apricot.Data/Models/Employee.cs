@@ -24,6 +24,9 @@ namespace Apricot.Data.Models
         [Display(Name="Employee Name")]
         public String Emp_Name { get; set; }
 
+        [Required]
+        public Boolean Is_Active { get; set; }
+
         public Int64 Dept_ID { get; set; }
         
         [ForeignKey("Dept_ID")]

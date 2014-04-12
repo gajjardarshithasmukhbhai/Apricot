@@ -24,7 +24,7 @@ namespace Apricot.Data.Models
         [Required]
         [DataType(DataType.PhoneNumber)]
         [Display(Name="Contact Number")]
-        public int Emp_Contact_No { get; set; }
+        public String Emp_Contact_No { get; set; }
 
         [Display(Name="Gender")]
         [Required]

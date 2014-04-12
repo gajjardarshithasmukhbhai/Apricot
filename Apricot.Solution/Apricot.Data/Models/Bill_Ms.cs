@@ -16,6 +16,7 @@ namespace Apricot.Data.Models
         [ForeignKey("Emp_ID")]
         public virtual Employee Manager { get; set; }
 
+        [Key]
         public Int64 Bill_ID { get; set; }
 
         [ForeignKey("Bill_ID")]

@@ -11,15 +11,15 @@ namespace Apricot.Data.Models
     public class Bill_FM
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Int64 Bill_FM_ID { get; set; }
 
         [ForeignKey("Bill_FM_ID")]
         public virtual Employee FinanceManager { get; set; }
 
+        [Key]
         public Int64 Bill_ID { get; set; }
 
         [ForeignKey("Bill_ID")]
-        public Bill Bill { get; set; }
+        public virtual Bill Bill { get; set; }
     }
 }

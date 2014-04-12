@@ -18,7 +18,7 @@ namespace Apricot.Data.Models
 
         [Required]
         [Display(Name="Account Number")]
-        public int Account_No { get; set; }
+        public Int64 Account_No { get; set; }
 
         public Int64 Bank_ID { get; set; }
 
