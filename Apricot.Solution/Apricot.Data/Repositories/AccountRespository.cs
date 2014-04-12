@@ -41,12 +41,8 @@ namespace Apricot.Data.Repositories
         /// </summary>
         /// <param name="AccountNumber">Account Number of Account</param>
         /// <returns>Account if Found, else NULL</returns>
-        /// <exception cref="">ArgumentNullException if AccountNumber is NULL</exception>
         public Account GetByAccountNumber(Int64 AccountNumber)
         {
-            if (AccountNumber == null)
-                throw new ArgumentNullException("Account Number");
-
             Account account = null;
             try
             {
@@ -123,18 +119,21 @@ namespace Apricot.Data.Repositories
         }
 
         #region Helpers
-         
         /* Account to be added here should have Unique Account Number
            Since Entity Framework donot Support Unique Constraints yet.
            So, Unique Constraint Functionality is Implemented Here
          */
         private bool UniqueAccount(Account account)
         {
-            Account accnt = _context.Accounts.Find(account.Emp_ID);
-            if (accnt != null && accnt.Account_No == account.Account_No)
-                return false;
+            int cnt = 0;
+            cnt = _context.Accounts.Where(a => a.Account_No == account.Account_No).Count();
 
-            return true;
+            if (cnt == 0)
+                return true;
+
+            return false;
         }
+
+        #endregion
     }
 }
