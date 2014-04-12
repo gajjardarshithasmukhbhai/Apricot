@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace Apricot.Data.Repositories
 {
-    public class Employee_DetailRepository
+    public class EmployeeDetailRepository
     {
         private readonly ApricotContext _context;
 
@@ -18,7 +18,7 @@ namespace Apricot.Data.Repositories
         /// </summary>
         /// <param name="context">Context</param>
         /// <exception cref="">ArgumentNullException</exception>
-        public Employee_DetailRepository(ApricotContext context)
+        public EmployeeDetailRepository(ApricotContext context)
         {
             if (context == null)
                 throw new ArgumentNullException("context");

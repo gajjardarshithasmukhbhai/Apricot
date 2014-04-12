@@ -75,8 +75,8 @@
     <Compile Include="Repositories\BillRepository.cs" />
     <Compile Include="Repositories\BillSCopyRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
-    <Compile Include="Repositories\Employee_DetailRepository.cs" />
-	<Compile Include="Repositories\BankRepository.cs" />
+    <Compile Include="Repositories\EmployeeDetailRepository.cs" />
+    <Compile Include="Repositories\BankRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\DepartmentRepositories.cs" />
     <Compile Include="Repositories\NotificationRepositories.cs" />
