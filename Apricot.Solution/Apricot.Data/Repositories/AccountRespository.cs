@@ -41,12 +41,8 @@ namespace Apricot.Data.Repositories
         /// </summary>
         /// <param name="AccountNumber">Account Number of Account</param>
         /// <returns>Account if Found, else NULL</returns>
-        /// <exception cref="">ArgumentNullException if AccountNumber is NULL</exception>
         public Account GetByAccountNumber(Int64 AccountNumber)
         {
-            if (AccountNumber == null)
-                throw new ArgumentNullException("Account Number");
-
             Account account = null;
             try
             {
@@ -136,5 +132,7 @@ namespace Apricot.Data.Repositories
 
             return true;
         }
+
+        #endregion
     }
 }
