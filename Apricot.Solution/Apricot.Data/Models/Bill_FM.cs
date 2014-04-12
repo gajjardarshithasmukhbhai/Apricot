@@ -11,12 +11,14 @@ namespace Apricot.Data.Models
     public class Bill_FM
     {
         [Key]
+        [Column(Order=1)]
         public Int64 Bill_FM_ID { get; set; }
 
         [ForeignKey("Bill_FM_ID")]
         public virtual Employee FinanceManager { get; set; }
 
         [Key]
+        [Column(Order=2)]
         public Int64 Bill_ID { get; set; }
 
         [ForeignKey("Bill_ID")]

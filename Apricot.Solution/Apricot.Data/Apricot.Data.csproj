@@ -34,7 +34,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -48,9 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApricotContext.cs" />
-    <Compile Include="Migrations\201404051651201_Init.cs" />
-    <Compile Include="Migrations\201404051651201_Init.Designer.cs">
-      <DependentUpon>201404051651201_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201404121439126_Init.cs" />
+    <Compile Include="Migrations\201404121439126_Init.Designer.cs">
+      <DependentUpon>201404121439126_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Bill_Detail.cs" />
     <Compile Include="Models\Bill_FM.cs" />
-    <Compile Include="Models\Bill_Ms.cs" />
+    <Compile Include="Models\Bill_M.cs" />
     <Compile Include="Models\Bill_SCopy.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Department.cs" />
@@ -73,8 +74,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404051651201_Init.resx">
-      <DependentUpon>201404051651201_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404121439126_Init.resx">
+      <DependentUpon>201404121439126_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

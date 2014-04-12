@@ -12,7 +12,7 @@ namespace Apricot.Data.Migrations
                 c => new
                     {
                         Emp_ID = c.Long(nullable: false),
-                        Account_No = c.Int(nullable: false),
+                        Account_No = c.Long(nullable: false),
                         Bank_ID = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Emp_ID)
@@ -39,6 +39,7 @@ namespace Apricot.Data.Migrations
                         Emp_ID = c.Long(nullable: false, identity: true),
                         Emp_No = c.String(nullable: false, maxLength: 15),
                         Emp_Name = c.String(nullable: false, maxLength: 50),
+                        Is_Active = c.Boolean(nullable: false),
                         Dept_ID = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Emp_ID)
@@ -85,13 +86,26 @@ namespace Apricot.Data.Migrations
                 "dbo.Bill_FM",
                 c => new
                     {
-                        Bill_FM_ID = c.Long(nullable: false, identity: true),
+                        Bill_FM_ID = c.Long(nullable: false),
                         Bill_ID = c.Long(nullable: false),
                     })
-                .PrimaryKey(t => t.Bill_FM_ID)
-                .ForeignKey("dbo.Bills", t => t.Bill_ID, cascadeDelete: true)
-                .ForeignKey("dbo.Employees", t => t.Bill_FM_ID)
+                .PrimaryKey(t => new { t.Bill_FM_ID, t.Bill_ID })
+                .ForeignKey("dbo.Bills", t => t.Bill_ID, cascadeDelete: false)
+                .ForeignKey("dbo.Employees", t => t.Bill_FM_ID, cascadeDelete: false)
                 .Index(t => t.Bill_FM_ID)
+                .Index(t => t.Bill_ID);
+            
+            CreateTable(
+                "dbo.Bill_M",
+                c => new
+                    {
+                        Emp_ID = c.Long(nullable: false),
+                        Bill_ID = c.Long(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Emp_ID, t.Bill_ID })
+                .ForeignKey("dbo.Bills", t => t.Bill_ID, cascadeDelete: false)
+                .ForeignKey("dbo.Employees", t => t.Emp_ID, cascadeDelete: false)
+                .Index(t => t.Emp_ID)
                 .Index(t => t.Bill_ID);
             
             CreateTable(
@@ -124,7 +138,7 @@ namespace Apricot.Data.Migrations
                     {
                         Emp_ID = c.Long(nullable: false),
                         Emp_Address = c.String(nullable: false, maxLength: 100),
-                        Emp_Contact_No = c.Int(nullable: false),
+                        Emp_Contact_No = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Emp_ID)
                 .ForeignKey("dbo.Employees", t => t.Emp_ID)
@@ -137,6 +151,7 @@ namespace Apricot.Data.Migrations
                         Ntf_ID = c.Long(nullable: false, identity: true),
                         Ntf_Subject = c.String(nullable: false, maxLength: 100),
                         Ntf_Body = c.String(nullable: false, maxLength: 1000),
+                        Seen = c.Boolean(nullable: false),
                         Emp_ID = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Ntf_ID)
@@ -151,6 +166,8 @@ namespace Apricot.Data.Migrations
             DropForeignKey("dbo.Employee_Detail", "Emp_ID", "dbo.Employees");
             DropForeignKey("dbo.Comments", "Bill_ID", "dbo.Bills");
             DropForeignKey("dbo.Bill_SCopy", "Bill_ID", "dbo.Bills");
+            DropForeignKey("dbo.Bill_M", "Emp_ID", "dbo.Employees");
+            DropForeignKey("dbo.Bill_M", "Bill_ID", "dbo.Bills");
             DropForeignKey("dbo.Bill_FM", "Bill_FM_ID", "dbo.Employees");
             DropForeignKey("dbo.Bill_FM", "Bill_ID", "dbo.Bills");
             DropForeignKey("dbo.Bill_Detail", "Bill_ID", "dbo.Bills");
@@ -162,6 +179,8 @@ namespace Apricot.Data.Migrations
             DropIndex("dbo.Employee_Detail", new[] { "Emp_ID" });
             DropIndex("dbo.Comments", new[] { "Bill_ID" });
             DropIndex("dbo.Bill_SCopy", new[] { "Bill_ID" });
+            DropIndex("dbo.Bill_M", new[] { "Bill_ID" });
+            DropIndex("dbo.Bill_M", new[] { "Emp_ID" });
             DropIndex("dbo.Bill_FM", new[] { "Bill_ID" });
             DropIndex("dbo.Bill_FM", new[] { "Bill_FM_ID" });
             DropIndex("dbo.Bills", new[] { "Emp_ID" });
@@ -173,6 +192,7 @@ namespace Apricot.Data.Migrations
             DropTable("dbo.Employee_Detail");
             DropTable("dbo.Comments");
             DropTable("dbo.Bill_SCopy");
+            DropTable("dbo.Bill_M");
             DropTable("dbo.Bill_FM");
             DropTable("dbo.Bills");
             DropTable("dbo.Bill_Detail");

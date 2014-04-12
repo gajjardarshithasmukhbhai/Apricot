@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Apricot.Data.Models;
 
 namespace Apricot.Data
@@ -24,6 +25,8 @@ namespace Apricot.Data
         public DbSet<Bill_Detail> Bill_Details { get; set; }
 
         public DbSet<Bill_FM> Bill_FMs { get; set; }
+
+        public DbSet<Bill_M> Bill_Ms { get; set; }
 
         public DbSet<Bill_SCopy> Bill_SCopies { get; set; }
 
