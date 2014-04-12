@@ -71,6 +71,10 @@
     <Compile Include="Repositories\AccountRespository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\Employee_DetailRepository.cs" />
+	<Compile Include="Repositories\BankRepository.cs" />
+    <Compile Include="Repositories\CommentRepository.cs" />
+    <Compile Include="Repositories\DepartmentRepositories.cs" />
+    <Compile Include="Repositories\NotificationRepositories.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
