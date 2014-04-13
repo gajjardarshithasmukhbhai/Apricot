@@ -10,7 +10,7 @@ namespace Apricot.Data.Models
     {
         public enum BillSatusEnum
         {
-            DRAFT, PENDING, APPROVED, REJECTED, CLOSED
+            PENDING, APPROVED, REJECTED, CLOSED
         }
 
         public enum BillModeOfPaymentEnum
