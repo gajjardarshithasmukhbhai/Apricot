@@ -6,7 +6,13 @@ namespace Apricot.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            //reached here means User is Authenticated, Send him to Dashboard
+            return RedirectToAction("Index", "Dashboard");
         }
 
         public ActionResult About()
