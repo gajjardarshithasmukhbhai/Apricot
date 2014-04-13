@@ -17,7 +17,8 @@
     clear: both;
 }
 
-body {
+body, html {
+   height: 100%;
     background: #eedfcc url(Images/bg3.jpg) no-repeat center top;
     -webkit-background-size: cover;
     -moz-background-size: cover;

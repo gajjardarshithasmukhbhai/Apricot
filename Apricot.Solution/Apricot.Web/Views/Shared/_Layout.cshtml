@@ -8,6 +8,7 @@
     <title>@ViewBag.Title - Apricot</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
 </head>
 <body>
     @if (Request.IsAuthenticated)
@@ -27,20 +28,100 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="affix" id="sidebar" data-spy="affix">
+
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            Employee
+                                        </a>
+                                        <a href="#" class="list-group-item">My Bills</a>
+                                        <a href="#" class="list-group-item">New Bill</a>
+                                        <a href="#" class="list-group-item">Notification</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            Manager
+                                        </a>
+                                        <a href="#" class="list-group-item">Bills</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (User.IsInRole("Finance Manager"))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            Finance Manager
+                                        </a>
+                                        <a href="#" class="list-group-item">Bills</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            Admin
+                                        </a>
+                                        <a href="~/Account/Index" class="list-group-item">Manage Users</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
     }
-    <div class="container body-content">
-        @RenderBody()
-        @if (Request.IsAuthenticated)
-        {
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Apricot</p>
-            </footer>
-        }
-    </div>
+    else
+    {
+        <div class="container-fluid">
+            @RenderBody()
+
+            @if (Request.IsAuthenticated)
+            {
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Apricot</p>
+                </footer>
+            }
+        </div>
+    }
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $("[data-toggle='popover']").popover();
+        });
+    </script>
 </body>
 </html>

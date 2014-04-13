@@ -5,21 +5,27 @@
 }
 
 <link href="~/Content/login.css" rel="stylesheet" type="text/css" />
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = "~/Dashboard" }, FormMethod.Post, new { @class = "loginForm clearfix", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    <p>
-        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-    </p>
-    <button type="submit" name="submit">
-        <i class="glyphicon glyphicon-arrow-right" style="line-height: 88px;"></i>
-        <span>Sign in</span>
-    </button>
-     @Html.ValidationMessageFor(m => m.UserName)
-     @Html.ValidationMessageFor(m => m.Password)
-}
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "~/Dashboard" }, FormMethod.Post, new { @class = "loginForm clearfix", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <p>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+            </p>
+            <button type="submit" name="submit">
+                <i class="glyphicon glyphicon-arrow-right" style="line-height: 88px;"></i>
+                <span>Sign in</span>
+            </button>
+            @Html.ValidationMessageFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.Password)
+        }
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
