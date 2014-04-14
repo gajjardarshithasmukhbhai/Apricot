@@ -135,5 +135,13 @@ namespace Apricot.Data.Repositories
         }
 
         #endregion
+        /// <summary>
+        /// Get All Account 
+        /// </summary>
+        /// <returns>List of Account</returns>
+        public IEnumerable<Account> GetAll() 
+        {
+            return _context.Accounts.ToList<Account>();
+        }
     }
 }

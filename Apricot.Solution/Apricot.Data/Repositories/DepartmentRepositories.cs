@@ -10,7 +10,7 @@ namespace Apricot.Data.Repositories
     class DepartmentRepositories
     {
         Department department;
-        ApricotContext _context;
+        private readonly ApricotContext _context;
         /// <summary>
         /// Constructor of DepartmentRepository
         /// </summary>
@@ -64,7 +64,7 @@ namespace Apricot.Data.Repositories
         /// Returns Whole Department Table
         /// </summary>
         /// <returns></returns>
-        public List<Department> GetAll()
+        public IEnumerable<Department> GetAll()
         {
             return _context.Departments.ToList<Department>();
         }

@@ -107,5 +107,13 @@ namespace Apricot.Data.Repositories
         }
 
         #endregion
+        /// <summary>
+        /// Get All Employees
+        /// </summary>
+        /// <returns>List Of Employee</returns>
+        public IEnumerable<Employee> GetAll()
+        {
+            return _context.Employees.ToList<Employee>();
+        }
     }
 }

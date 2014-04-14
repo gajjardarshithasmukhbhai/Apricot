@@ -10,7 +10,7 @@ namespace Apricot.Data.Repositories
     public class CommentRepository
     {
         Comment comment;
-        ApricotContext _context;
+        private readonly ApricotContext _context;
         /// <summary>
         /// Contructor of Comment Repository
         /// </summary>
@@ -63,7 +63,7 @@ namespace Apricot.Data.Repositories
         /// Returns whole Comment Table
         /// </summary>
         /// <returns></returns>
-        public List<Comment> GetAll()
+        public IEnumerable<Comment> GetAll()
         {
             return _context.Comments.ToList<Comment>();
         }

@@ -59,5 +59,13 @@ namespace Apricot.Data.Repositories
             _context.Entry<Employee_Detail>(employeeDetail).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+        /// <summary>
+        /// Get All Employee Details 
+        /// </summary>
+        /// <returns>List of Employee_Details</returns>
+        public IEnumerable<Employee_Detail> GetAll()
+        {
+            return _context.Employee_Details.ToList<Employee_Detail>();
+        }
     }
 }

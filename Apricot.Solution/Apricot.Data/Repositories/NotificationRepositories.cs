@@ -9,7 +9,7 @@ namespace Apricot.Data.Repositories
 {
     public class NotificationRepositories
     {
-        readonly private ApricotContext _context;
+        private readonly ApricotContext _context;
         /// <summary>
         /// Constructor of Notification Repository
         /// </summary>
@@ -45,7 +45,7 @@ namespace Apricot.Data.Repositories
         /// </summary>
         /// <param name="Emp_ID">EmployeeID</param>
         /// <returns>List of Notification if found else null</returns>
-        public List<Notification> GetAllByEmpID(Int64 Emp_ID)
+        public IEnumerable<Notification> GetAllByEmpID(Int64 Emp_ID)
         {
             return _context.Notifications.Where(a => a.Emp_ID == Emp_ID).ToList<Notification>();
         }
@@ -53,7 +53,7 @@ namespace Apricot.Data.Repositories
         /// Returns whole Notification Table
         /// </summary>
         /// <returns></returns>
-        public List<Notification> GetAll()
+        public IEnumerable<Notification> GetAll()
         {
             return _context.Notifications.ToList<Notification>();
         }

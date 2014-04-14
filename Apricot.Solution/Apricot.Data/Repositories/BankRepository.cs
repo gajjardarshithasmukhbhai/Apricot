@@ -11,7 +11,7 @@ namespace Apricot.Data.Repositories
     public class BankRepository
     {
         Bank bank;
-        ApricotContext _context;
+        private readonly ApricotContext _context;
         /// <summary>
         /// Constructor of Banks Repository
         /// </summary>
@@ -61,7 +61,7 @@ namespace Apricot.Data.Repositories
         /// Returns whole Bank Table
         /// </summary>
         /// <returns></returns>
-        public List<Bank> GetAll()
+        public IEnumerable<Bank> GetAll()
         {
             return _context.Banks.ToList<Bank>();
         }
