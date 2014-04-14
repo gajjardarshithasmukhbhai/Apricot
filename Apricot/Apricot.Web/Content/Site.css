@@ -3,6 +3,22 @@
     padding-bottom: 20px;
 }
 
+#sidebar.affix-top {
+    position: fixed;
+    margin-top: 60px;
+    width: 250px;
+}
+
+#sidebar.affix {
+    position: fixed;
+    top: 60px;
+    width: 250px;
+}
+
+.affix, .affix-top {
+    position: static;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
