@@ -10,7 +10,14 @@ namespace Apricot.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
         }
 
         public ActionResult About()
