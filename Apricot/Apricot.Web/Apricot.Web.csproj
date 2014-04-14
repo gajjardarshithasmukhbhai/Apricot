@@ -246,6 +246,11 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\MyBills.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Shared\_SidePanel.cshtml" />
+    <Content Include="Views\Dashboard\NewBill.cshtml" />
+    <Content Include="Views\Dashboard\Notifications.cshtml" />
+    <Content Include="Views\Dashboard\ManagerBills.cshtml" />
+    <Content Include="Views\Dashboard\FManagerBills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

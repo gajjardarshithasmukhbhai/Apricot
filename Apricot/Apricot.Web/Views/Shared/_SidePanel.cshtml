@@ -1,0 +1,52 @@
+﻿<div class="affix" id="sidebar" data-spy="affix">
+    @if (User.IsInRole("Employee"))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+                    @Html.ActionLink("Employee", "Index", "Dashboard", null, new { @class = "list-group-item active" })
+                    @Html.ActionLink("My Bills", "MyBills", "Dashboard", null, new { @class = "list-group-item" })
+                    @Html.ActionLink("New Bill", "NewBill", "Dashboard", null, new { @class = "list-group-item" })
+                    @Html.ActionLink("Notifications", "Notifications", "Dashboard", null, new { @class = "list-group-item" })
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (User.IsInRole("Manager"))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+                    @Html.ActionLink("Manager", "Index", "Dashboard", null, new { @class = "list-group-item active" })
+                    @Html.ActionLink("Bills", "ManagerBills", "Dashboard", null, new { @class = "list-group-item" })
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (User.IsInRole("Finance Manager"))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+                    @Html.ActionLink("Finance Manager", "Index", "Dashboard", null, new { @class = "list-group-item active" })
+                    @Html.ActionLink("Bills", "FManagerBills", "Dashboard", null, new { @class = "list-group-item " })
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+                    @Html.ActionLink("Admin", "Index", "Dashboard", null, new { @class = "list-group-item active" })
+                    @Html.ActionLink("Manage Users", "Index", "Account", null, new { @class = "list-group-item " })
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

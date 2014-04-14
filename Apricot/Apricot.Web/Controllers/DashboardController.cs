@@ -26,5 +26,29 @@ namespace Apricot.Web.Controllers
 
             return View(allbills);
         }
+
+        [Authorize(Roles="Employee")]
+        public ActionResult NewBill()
+        {
+            return View();
+        }
+
+        [Authorize(Roles="Employee")]
+        public ActionResult Notifications()
+        {
+            return View();
+        }
+
+        [Authorize(Roles="Manager")]
+        public ActionResult ManagerBills()
+        {
+            return View();
+        }
+
+        [Authorize(Roles="Finance Manager")]
+        public ActionResult FManagerBills()
+        {
+            return View();
+        }
     }
 }
