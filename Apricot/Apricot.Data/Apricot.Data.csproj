@@ -81,10 +81,10 @@
     <Compile Include="Repositories\BillRepository.cs" />
     <Compile Include="Repositories\BillSCopyRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
-    <Compile Include="Repositories\DepartmentRepositories.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\EmployeeDetailRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
-    <Compile Include="Repositories\NotificationRepositories.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201404141925316_Init.resx">

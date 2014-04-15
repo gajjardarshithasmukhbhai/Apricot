@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Apricot.Data.Repositories
 {
-    public class NotificationRepositories
+    public class NotificationRepository
     {
         private readonly ApricotContext _context;
         /// <summary>
         /// Constructor of Notification Repository
         /// </summary>
         /// <param name="context">Accepts Context of the Applicayion</param>
-        public NotificationRepositories(ApricotContext context)
+        public NotificationRepository(ApricotContext context)
         {
             if (context == null)
             {
