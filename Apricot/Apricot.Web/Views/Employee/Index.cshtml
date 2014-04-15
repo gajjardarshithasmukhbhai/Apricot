@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Apricot.Web.Models.BillViewModel>
+@using Apricot.Data.Models;
+
+@{
+    ViewBag.Title = "My Bills";
+}
+
+<h2>My Bills</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr class="bg-info">
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.BillStatus)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.BillAmount)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.BillDate)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.BillType)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.ModeOfPayment)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.BillSCopy)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Manager)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.FManager)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.BillStatus == ApricotEnums.BillSatusEnum.PENDING || item.BillStatus == ApricotEnums.BillSatusEnum.REJECTED)
+            {
+                <td class="bg-warning ">
+                    @Html.DisplayFor(modelItem => item.BillStatus)
+                </td>
+            }
+            else if (item.BillStatus == ApricotEnums.BillSatusEnum.APPROVED)
+            {
+                <td class="bg-primary">
+                    @Html.DisplayFor(modelItem => item.BillStatus)
+                </td>
+            }
+            else
+            {
+                <td class="bg-success">
+                    @Html.DisplayFor(modelItem => item.BillStatus)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.BillAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillDate.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeOfPayment)
+            </td>
+            <td>
+                @if (item.BillSCopy != null)
+                {
+                    @Html.DisplayFor(modelItem => item.BillSCopy)
+                }
+                else
+                {
+                    <span class="text-danger">Not Avialable</span>
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FManager)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BillID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BillID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BillID })
+            </td>*@
+        </tr>
+    }
+
+</table>

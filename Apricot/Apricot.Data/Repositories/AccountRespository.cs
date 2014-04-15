@@ -27,13 +27,13 @@ namespace Apricot.Data.Repositories
         }
 
         /// <summary>
-        /// Returns Account Async Identified by EmpId (Employee ID) 
+        /// Returns Account Identified by EmpId (Employee ID) 
         /// </summary>
         /// <param name="EmpID">Employee ID whose Account is to be Found</param>
         /// <returns>Account is found, else NULL </returns>
-        public async Task<Account> GetByEmpID(Int64 EmpID)
+        public Account GetByEmpID(Int64 EmpID)
         {
-            return await _context.Accounts.FindAsync(EmpID);
+            return _context.Accounts.Find(EmpID);
         }
 
         /// <summary>
