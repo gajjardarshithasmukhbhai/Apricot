@@ -26,13 +26,13 @@ namespace Apricot.Data.Repositories
         }
 
         /// <summary>
-        /// Get Bills Identifies By Bill ID Asynchronously
+        /// Get Bills Identifies By Bill ID
         /// </summary>
         /// <param name="BillID">Bill ID</param>
         /// <returns>Bills</returns>
-        public async Task<Bill> GetByBillID(Int64 BillID)
+        public Bill GetByBillID(Int64 BillID)
         {
-            return await _context.Bills.FindAsync(BillID);
+            return _context.Bills.Find(BillID);
         }
 
         /// <summary>
