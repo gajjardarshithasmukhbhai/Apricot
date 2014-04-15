@@ -1,26 +1,26 @@
-﻿@model Apricot.Data.Models.Employee
+﻿@model Apricot.Data.Models.Department
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Employee </h2>
+<h2>Edit Department </h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Employee</h4>
+        <h4>Department</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Emp_Name)
+        @Html.HiddenFor(model => model.Dept_ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Emp_Name, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Dept_Name, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Emp_Name)
-                @Html.ValidationMessageFor(model => model.Emp_Name)
+                @Html.EditorFor(model => model.Dept_Name)
+                @Html.ValidationMessageFor(model => model.Dept_Name)
             </div>
         </div>
 
