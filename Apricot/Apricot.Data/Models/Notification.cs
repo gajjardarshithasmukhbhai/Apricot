@@ -27,6 +27,10 @@ namespace Apricot.Data.Models
         [Required]
         public Boolean Seen { get; set; }
 
+        [Display(Name="Time Stamp")]
+        [DataType(DataType.DateTime)]
+        public DateTime TimeStamp { get; set; }
+
         [Required]
         public Int64 Emp_ID { get; set; }
 

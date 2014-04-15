@@ -24,6 +24,10 @@ namespace Apricot.Data.Models
         [Display(Name="Comment Body")]
         public String Cmt_Body { get; set; }
 
+        [Display(Name="Time Stamp")]
+        [DataType(DataType.DateTime)]
+        public DateTime TimeStamp { get; set; }
+
         [Required]
         public Int64 Bill_ID { get; set; }
 

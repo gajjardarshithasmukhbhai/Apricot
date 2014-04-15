@@ -57,6 +57,14 @@
     <Compile Include="Migrations\201404141925316_Init.Designer.cs">
       <DependentUpon>201404141925316_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404152016055_TimeStampOnNotification.cs" />
+    <Compile Include="Migrations\201404152016055_TimeStampOnNotification.Designer.cs">
+      <DependentUpon>201404152016055_TimeStampOnNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404152020055_TimestampOnComment.cs" />
+    <Compile Include="Migrations\201404152020055_TimestampOnComment.Designer.cs">
+      <DependentUpon>201404152020055_TimestampOnComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\ApricotEnums.cs" />
@@ -89,6 +97,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201404141925316_Init.resx">
       <DependentUpon>201404141925316_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404152016055_TimeStampOnNotification.resx">
+      <DependentUpon>201404152016055_TimeStampOnNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404152020055_TimestampOnComment.resx">
+      <DependentUpon>201404152020055_TimestampOnComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
