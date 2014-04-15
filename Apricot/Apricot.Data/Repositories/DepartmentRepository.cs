@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Apricot.Data.Repositories
 {
-    class DepartmentRepositories
+    public class DepartmentRepository
     {
         Department department;
         private readonly ApricotContext _context;
@@ -15,7 +15,7 @@ namespace Apricot.Data.Repositories
         /// Constructor of DepartmentRepository
         /// </summary>
         /// <param name="context">Accepts Context of the Application</param>
-        public DepartmentRepositories(ApricotContext context)
+        public DepartmentRepository(ApricotContext context)
         {
             if (context == null)
             {
@@ -44,6 +44,7 @@ namespace Apricot.Data.Repositories
                 throw new ArgumentNullException();
             }
             _context.Departments.Add(_dept);
+            _context.SaveChanges();
             return;
         }
         /// <summary>
@@ -67,6 +68,16 @@ namespace Apricot.Data.Repositories
         public IEnumerable<Department> GetAll()
         {
             return _context.Departments.ToList<Department>();
+        }
+        /// <summary>
+        /// Returns Department Identified By Specified Department Name
+        /// </summary>
+        /// <param name="_dept_name">Accepts string</param>
+        /// <returns>Department if found else null</returns>
+        public Department GetByDepartName(string _dept_name)
+        {
+            department = _context.Departments.Where(a => a.Dept_Name == _dept_name).Single();
+            return department;
         }
     }
 }
