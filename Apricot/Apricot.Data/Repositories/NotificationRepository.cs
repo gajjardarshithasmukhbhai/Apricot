@@ -38,6 +38,7 @@ namespace Apricot.Data.Repositories
         public void AddNotification(Notification ntf)
         {
             _context.Notifications.Add(ntf);
+            _context.SaveChanges();
             return;
         }
         /// <summary>

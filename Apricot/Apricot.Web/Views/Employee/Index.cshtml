@@ -41,9 +41,15 @@
     @foreach (var item in Model)
     {
         <tr>
-            @if (item.BillStatus == ApricotEnums.BillSatusEnum.PENDING || item.BillStatus == ApricotEnums.BillSatusEnum.REJECTED)
+            @if (item.BillStatus == ApricotEnums.BillSatusEnum.PENDING)
             {
-                <td class="bg-warning ">
+                <td class="bg-warning">
+                    @Html.DisplayFor(modelItem => item.BillStatus)
+                </td>
+            }
+            else if (item.BillStatus == ApricotEnums.BillSatusEnum.REJECTED)
+            {
+                <td class="bg-danger">
                     @Html.DisplayFor(modelItem => item.BillStatus)
                 </td>
             }
@@ -88,11 +94,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FManager)
             </td>
-            @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BillID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BillID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BillID })
-            </td>*@
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.BillID })*@
+                @Html.ActionLink("Details", "Details", new { id = item.BillID })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.BillID })*@
+            </td>
         </tr>
     }
 

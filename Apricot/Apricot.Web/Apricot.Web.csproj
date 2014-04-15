@@ -252,6 +252,8 @@
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -261,6 +263,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Apricot.BusinessLogic\Apricot.BusinessLogic.csproj">
+      <Project>{99e36797-d170-4ee0-bb62-472d8f7ffe44}</Project>
+      <Name>Apricot.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Apricot.Data\Apricot.Data.csproj">
       <Project>{2e4f7230-3cae-474b-947f-9fec61c00d80}</Project>
       <Name>Apricot.Data</Name>

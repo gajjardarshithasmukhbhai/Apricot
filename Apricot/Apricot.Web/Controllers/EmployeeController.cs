@@ -10,6 +10,7 @@ using Apricot.Web.Models;
 using Apricot.Web.App_Code;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Apricot.BusinessLogic;
 
 namespace Apricot.Web.Controllers
 {
@@ -67,6 +68,17 @@ namespace Apricot.Web.Controllers
                 FillBillsViewModel fbvm = new FillBillsViewModel(Db);
                 fbvm.CreateNewBill(User.Identity.Name, model);
 
+                //Get BillID
+                BillDetailRepository billdetailrepo = new BillDetailRepository(Db);
+                var billdetail= billdetailrepo.GetAll().Where(bd => (bd.Bill_Date == model.BillDate && 
+                                                            bd.Bill_Type == model.BillType && 
+                                                            bd.Bill_ModeOfPayment == model.ModeOfPayment));
+                model.BillID = billdetail.Select(bd => bd.Bill_ID).Single();
+
+                //Create Notification for New Bill
+                NotificationBL notibl = new NotificationBL(Db);
+                notibl.NotifyManager(model.BillID);
+
                 return RedirectToAction("Index");
             }
 
@@ -74,6 +86,23 @@ namespace Apricot.Web.Controllers
             return View(model);
         }
 
+        public ActionResult Details(Int64 id)
+        {
+            ApricotContext Db = new ApricotContext();
+            FillBillsViewModel fbvm = new FillBillsViewModel(Db);
+            BillViewModel bvm = fbvm.getBillDetail(id);
 
+            return View(bvm);
+        }
+
+        public ActionResult Notifications()
+        {
+            ApricotContext Db = new ApricotContext();
+            NotificationRepository notirepo = new NotificationRepository(Db);
+            var emp_Id = Db.Employees.Where(e => e.Emp_No == User.Identity.Name).Select(e => e.Emp_ID).Single();
+            var notifications = notirepo.GetAllByEmpID(emp_Id);
+
+            return View(notifications);
+        }
     }
 }

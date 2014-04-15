@@ -95,6 +95,7 @@ namespace Apricot.Web.App_Code
                     Bill_ID = bill.Bill_ID,
                     SCopy = model.BillSCopy
                 };
+                bscopyrepo.AddBillSCopy(billscopy);
             }
 
             //Add Bill Manager
@@ -110,6 +111,42 @@ namespace Apricot.Web.App_Code
             billm.Emp_ID = ManagerId;
 
             bmrepo.AddBillM(billm);
+        }
+
+        public BillViewModel getBillDetail(Int64 id)
+        {
+            BillRepository billrepo = new BillRepository(_context);
+            BillDetailRepository billdetailrepo = new BillDetailRepository(_context);
+            BillMRepository billmrepo = new BillMRepository(_context);
+            BillFMRepository billfmrepo = new BillFMRepository(_context);
+            BillSCopyRepository billscopyrepo = new BillSCopyRepository(_context);
+            BillViewModel bvm = new BillViewModel();
+
+            Bill bill = billrepo.GetByBillID(id);
+            Bill_Detail billdetail = billdetailrepo.GetByBillID(id);
+            Bill_M billmanager = billmrepo.GetByBillID(id);
+            Bill_FM billfmanager = null;
+            Bill_SCopy billscopy= null;
+            
+            if (bill.Bill_Status == ApricotEnums.BillSatusEnum.APPROVED || bill.Bill_Status == ApricotEnums.BillSatusEnum.CLOSED)
+            {
+                billfmanager = billfmrepo.GetByBillId(id);
+            }
+
+            if (billdetail.Bill_have_SCopy)
+                billscopy = billscopyrepo.GetByBillID(id);
+
+            bvm.BillID = bill.Bill_ID;
+            bvm.BillStatus = bill.Bill_Status;
+            bvm.BillAmount = billdetail.Bill_Amount;
+            bvm.BillDate = billdetail.Bill_Date;
+            bvm.BillSCopy = null;
+            bvm.BillType = billdetail.Bill_Type;
+            bvm.FManager = (billfmanager != null) ? billfmanager.FinanceManager.Emp_No : "Not Aviablable";
+            bvm.Manager = billmanager.Manager.Emp_Name;
+            bvm.ModeOfPayment = billdetail.Bill_ModeOfPayment;
+
+            return bvm;
         }
     }
 }

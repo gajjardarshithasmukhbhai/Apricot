@@ -21,8 +21,8 @@ namespace Apricot.BusinessLogic
             BillMRepository billm = new BillMRepository(_context);
             Bill_M bill_m = new Bill_M();
             bill_m = billm.GetByBillID(bill_ID);
-            Employee emp = new Employee();
-            Bill bill = new Bill();
+            Employee emp = null;
+            Bill bill = null;
             bill = _context.Bills.Find(bill_ID);
             emp = _context.Employees.Find(bill.Emp_ID);
             NotificationRepository ntf = new NotificationRepository(_context);
@@ -36,6 +36,7 @@ namespace Apricot.BusinessLogic
 
             };
             ntf.AddNotification(_ntf);
+
             return;
         }
         public void NotificationOfRejection(Int64 bill_ID)
