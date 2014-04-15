@@ -52,6 +52,7 @@ namespace Apricot.Web.Controllers
             ViewBag.MessageId = Message;
             return View(model);
         }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]

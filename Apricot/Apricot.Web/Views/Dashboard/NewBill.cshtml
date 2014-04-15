@@ -1,7 +1,50 @@
-﻿
+﻿@model Apricot.Web.Models.NewBillViewModel
+
 @{
     ViewBag.Title = "New Bill";
 }
 
 <h2>New Bill</h2>
+<hr />
 
+@using (Html.BeginForm("NewBill", "Dashboard", FormMethod.Post, new { @Class = "form-horizontal" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.BillDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BillDate, new { @class = "form-control", @Value = DateTime.Now, @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.BillDate)
+        </div>
+        @Html.LabelFor(m => m.BillStatus, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BillStatus, new { @class = "form-control", @Value = Apricot.Data.Models.ApricotEnums.BillSatusEnum.PENDING, @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.BillStatus)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BillType, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BillType, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.BillType)
+        </div>
+        @Html.LabelFor(m => m.BillAmount, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BillAmount, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.BillAmount)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ModeOfPayment, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ModeOfPayment, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.BillType)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Manager, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Manager, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Manager)
+        </div>
+    </div>
+}
