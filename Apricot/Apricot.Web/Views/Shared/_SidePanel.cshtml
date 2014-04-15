@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="list-group">
-                    @Html.ActionLink("Employee", "Index", "Dashboard", null, new { @class = "list-group-item active" })
-                    @Html.ActionLink("My Bills", "MyBills", "Dashboard", null, new { @class = "list-group-item" })
-                    @Html.ActionLink("New Bill", "NewBill", "Dashboard", null, new { @class = "list-group-item" })
+                    <a class="list-group-item active">Employee</a>
+                    @Html.ActionLink("My Bills", "Index", "Employee", null, new { @class = "list-group-item" })
+                    @Html.ActionLink("New Bill", "Create", "Employee", null, new { @class = "list-group-item" })
                     @Html.ActionLink("Notifications", "Notifications", "Dashboard", null, new { @class = "list-group-item" })
                 </div>
             </div>

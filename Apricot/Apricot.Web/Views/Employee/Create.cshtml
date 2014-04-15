@@ -1,0 +1,107 @@
+﻿@model Apricot.Web.Models.BillViewModel
+@using Apricot.Data.Models;
+
+@{
+    ViewBag.Title = "Create";
+    List<SelectListItem> managerdroplist = new List<SelectListItem>();
+    foreach (var manager in ViewBag.Managerslist)
+    {
+        managerdroplist.Add(new SelectListItem() { 
+            Text = manager.ToString(),
+            Value = manager.ToString()
+        });
+    }
+}
+
+<h2>Create New Bill</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Fill Bill Details</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillStatus, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.BillStatus, new { @disabled = "disabled", @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.BillStatus)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BillAmount)
+                @Html.ValidationMessageFor(model => model.BillAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.BillDate, new { @Value = DateTime.Now})
+                @Html.ValidationMessageFor(model => model.BillDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BillType)
+                @Html.ValidationMessageFor(model => model.BillType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModeOfPayment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.ModeOfPayment)
+                @Html.ValidationMessageFor(model => model.ModeOfPayment)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.BillSCopy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BillSCopy)
+                @Html.ValidationMessageFor(model => model.BillSCopy)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Manager, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Manager, managerdroplist)
+                @*@Html.EditorFor(model => model.Manager)*@
+                @Html.ValidationMessageFor(model => model.Manager)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FManager, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.FManager, new { @disabled="disabled", @Value="Not yet Alloted"})
+                @Html.ValidationMessageFor(model => model.FManager)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
