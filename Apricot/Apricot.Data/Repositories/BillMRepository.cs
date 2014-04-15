@@ -56,5 +56,15 @@ namespace Apricot.Data.Repositories
         {
             return _context.Bill_Ms.ToList<Bill_M>();
         }
+
+        /// <summary>
+        /// Return Bill_Ms Identified by Bill Id
+        /// </summary>
+        /// <param name="billid">Bill Id</param>
+        /// <returns>Bill_M</returns>
+        public Bill_M GetByBillID(Int64 billid)
+        {
+            return _context.Bill_Ms.First(bm => bm.Bill_ID == billid);
+        }
     }
 }

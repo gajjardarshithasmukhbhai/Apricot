@@ -13,7 +13,7 @@ namespace Apricot.BusinessLogic
 {
     public class FinanceManagerBL
     {
-        ApricotContext _context;
+        ApricotContext _context = new ApricotContext();
         public FinanceManagerBL(ApricotContext con)
         {
             _context = con;
