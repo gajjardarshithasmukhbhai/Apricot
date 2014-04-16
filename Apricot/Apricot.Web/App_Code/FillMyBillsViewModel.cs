@@ -8,19 +8,19 @@ using System.Web;
 
 namespace Apricot.Web.App_Code
 {
-    public class FillBillViewModel
+    public class FillMyBillsViewModel
     {
         private ApricotContext _context;
 
-        public FillBillViewModel(Data.ApricotContext _context)
+        public FillMyBillsViewModel(Data.ApricotContext _context)
         {
             // TODO: Complete member initialization
             this._context = _context;
         }
 
-        public IEnumerable<BillViewModel> getMyBills(String EmployeeNumber)
+        public IEnumerable<MyBillViewModel> getMyBills(String EmployeeNumber)
         {
-            List<BillViewModel> myBills = new List<BillViewModel>(0);
+            List<MyBillViewModel> myBills = new List<MyBillViewModel>(0);
             List<Bill> bills = _context.Bills.Where(b => b.Employee.Emp_No == EmployeeNumber).ToList();
 
             foreach (var bill in bills)
@@ -35,7 +35,7 @@ namespace Apricot.Web.App_Code
                     Fmanager = _context.Bill_FMs.Where(bf => bf.Bill_ID == bill.Bill_ID).Select(b => b.FinanceManager.Emp_Name).Single();
                 }
 
-                BillViewModel bvm = new BillViewModel();
+                MyBillViewModel bvm = new MyBillViewModel();
                 
                 //There will always be a Entry for a Bill. Just to double Check in case of Incosistent Data
                 if (billDetail != null)

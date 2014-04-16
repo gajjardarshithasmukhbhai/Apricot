@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Apricot.Web.Models
 {
-    public class BillViewModel
+    public class MyBillViewModel
     {
         [Display(Name = "Bill ID")]
         public Int64 BillID { get; set; }

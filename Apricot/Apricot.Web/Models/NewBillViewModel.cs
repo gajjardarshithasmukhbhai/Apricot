@@ -9,9 +9,6 @@ namespace Apricot.Web.Models
 {
     public class NewBillViewModel
     {
-        [Display(Name = "Bill ID")]
-        public Int64 BillID { get; set; }
-
         [Display(Name = "Bill Status")]
         public ApricotEnums.BillSatusEnum BillStatus { get; set; }
 
@@ -33,8 +30,6 @@ namespace Apricot.Web.Models
         [Display(Name = "Manager")]
         public String Manager { get; set; }
 
-        [Display(Name = "Finance Manager")]
-        public String FManager { get; set; }
-
+        public List<Employee> Managers { get; set; }
     }
 }

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Apricot.Web.App_Code;
 using Apricot.Data;
 using Apricot.Web.Models;
+using System.Threading.Tasks;
+using Apricot.Data.Models;
 
 namespace Apricot.Web.Controllers
 {
@@ -21,7 +23,7 @@ namespace Apricot.Web.Controllers
         [Authorize(Roles = "Employee")]
         public ActionResult MyBills()
         {
-            FillBillViewModel FB = new FillBillViewModel(_context);
+            FillMyBillsViewModel FB = new FillMyBillsViewModel(_context);
             var allbills = FB.getMyBills(User.Identity.Name);
 
             return View(allbills);
@@ -31,6 +33,15 @@ namespace Apricot.Web.Controllers
         public ActionResult NewBill()
         {
             return View();
+        }
+
+        [Authorize(Roles="Employee")]
+        [HttpPost]
+        public Action NewBill(NewBillViewModel billModel)
+        {
+
+            //reached here, Everything is OK 
+            return View(ViewBag.Message = "Successfully Filled Bill");
         }
 
         [Authorize(Roles="Employee")]
