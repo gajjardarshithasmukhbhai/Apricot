@@ -7,9 +7,10 @@ using System.Web;
 
 namespace Apricot.Web.Models
 {
-    public class MyBillViewModel
+    public class BillViewModel
     {
         [Display(Name = "Bill ID")]
+        [Key]
         public Int64 BillID { get; set; }
 
         [Display(Name = "Bill Status")]
@@ -35,6 +36,5 @@ namespace Apricot.Web.Models
 
         [Display(Name = "Finance Manager")]
         public String FManager { get; set; }
-
     }
 }

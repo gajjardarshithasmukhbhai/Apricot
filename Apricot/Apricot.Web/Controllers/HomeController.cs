@@ -16,7 +16,7 @@ namespace Apricot.Web.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Employee");
             }
         }
 
