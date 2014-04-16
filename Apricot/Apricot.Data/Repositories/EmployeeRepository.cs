@@ -31,9 +31,9 @@ namespace Apricot.Data.Repositories
         /// </summary>
         /// <param name="EmpID">Employee ID</param>
         /// <returns>Employee whose ID is EmpID</returns>
-        public async Task<Employee> GetByEmpID(Int64 EmpID)
+        public Employee GetByEmpID(Int64 EmpID)
         {
-            return await _context.Employees.FindAsync(EmpID);
+            return _context.Employees.Find(EmpID);
         }
 
         /// <summary>
@@ -71,12 +71,12 @@ namespace Apricot.Data.Repositories
         }
 
         /// <summary>
-        /// Update Employee Asynchronously
+        /// Update Employee
         /// </summary>
         /// <param name="employee">Employee to Update</param>
         /// <returns>True is Employee is Update Successfully, False Otherwise (i.e. Duplicate Employee Number)</returns>
         /// <exception cref="">ArgumentNullException if employee is NULL</exception>
-        public async Task<bool> UpdateEmployee(Employee employee)
+        public bool UpdateEmployee(Employee employee)
         {
             if (employee == null)
                 throw new ArgumentNullException("employee");
@@ -86,7 +86,7 @@ namespace Apricot.Data.Repositories
 
             _context.Entry<Employee>(employee).State = EntityState.Modified;
  
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
 
             return true;
         }

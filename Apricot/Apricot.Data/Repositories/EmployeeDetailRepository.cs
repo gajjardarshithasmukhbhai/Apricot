@@ -27,13 +27,13 @@ namespace Apricot.Data.Repositories
         }
 
         /// <summary>
-        /// Get Employee Details Identifies By Employee ID Asynchronously
+        /// Get Employee Details Identifies By Employee ID
         /// </summary>
         /// <param name="EmpID">Employee ID</param>
         /// <returns>Employee Details</returns>
-        public async Task<Employee_Detail> GetByEmpID(Int64 EmpID)
+        public Employee_Detail GetByEmpID(Int64 EmpID)
         {
-            return await _context.Employee_Details.FindAsync(EmpID);
+            return _context.Employee_Details.Find(EmpID);
         }
 
         /// <summary>
@@ -54,10 +54,10 @@ namespace Apricot.Data.Repositories
         /// Update Employee Detail
         /// </summary>
         /// <param name="employeeDetail">Employee Detail</param>
-        public async Task UpdateEmployeeDetail(Employee_Detail employeeDetail)
+        public void UpdateEmployeeDetail(Employee_Detail employeeDetail)
         {
             _context.Entry<Employee_Detail>(employeeDetail).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
         /// <summary>
         /// Get All Employee Details 
