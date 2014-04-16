@@ -12,7 +12,7 @@
         var employee = employeerepo.GetByEmpNo(User.Identity.Name);
         if (employee != null)
         {
-            notif = notirepo.GetAllByEmpID(employee.Emp_ID).OrderByDescending(e => e.TimeStamp).Select(ns => ns.Ntf_Subject).First();
+            notif = notirepo.GetAllByEmpID(employee.Emp_ID).OrderByDescending(e => e.TimeStamp).Select(ns => ns.Ntf_Subject).FirstOrDefault();
         }
     }
 }
