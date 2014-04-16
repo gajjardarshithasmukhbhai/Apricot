@@ -49,6 +49,7 @@ namespace Apricot.Data.Repositories
         public void AddComment(Comment _comment)
         {
             _context.Comments.Add(_comment);
+            _context.SaveChanges();
             return;
         }
         /// <summary>

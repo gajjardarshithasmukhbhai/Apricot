@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillBL.cs" />
+    <Compile Include="CommentBL.cs" />
     <Compile Include="DepartmentBL.cs" />
     <Compile Include="FinanceManagerBL.cs" />
     <Compile Include="NotificationBL.cs" />
