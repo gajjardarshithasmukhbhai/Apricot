@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201404160655354_EmpIdOnComment.Designer.cs">
       <DependentUpon>201404160655354_EmpIdOnComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404160933019_EmployeeGenderChangedtoStringType.cs" />
+    <Compile Include="Migrations\201404160933019_EmployeeGenderChangedtoStringType.Designer.cs">
+      <DependentUpon>201404160933019_EmployeeGenderChangedtoStringType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\ApricotEnums.cs" />
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404160655354_EmpIdOnComment.resx">
       <DependentUpon>201404160655354_EmpIdOnComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404160933019_EmployeeGenderChangedtoStringType.resx">
+      <DependentUpon>201404160933019_EmployeeGenderChangedtoStringType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

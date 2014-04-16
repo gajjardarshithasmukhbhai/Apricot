@@ -100,6 +100,7 @@ namespace Apricot.Web.Controllers
             ApricotContext Db = new ApricotContext();
             NotificationRepository notirepo = new NotificationRepository(Db);
             var emp_Id = Db.Employees.Where(e => e.Emp_No == User.Identity.Name).Select(e => e.Emp_ID).Single();
+
             var notifications = notirepo.GetAllByEmpID(emp_Id);
 
             return View(notifications);

@@ -1,0 +1,137 @@
+﻿@model Apricot.Web.Models.BillViewModel
+
+@{
+    ViewBag.Title = "Details";
+
+    //Generate Department Selectlistitem
+    List<SelectListItem> departments = new List<SelectListItem>(0);
+    foreach (var department in ViewBag.departmentslist)
+    {
+        departments.Add(new SelectListItem() { Value = department, Text = department });
+    }
+}
+
+<h2>Details</h2>
+
+@using (Html.BeginForm("ConfirmDecision", "Manager", new { id = Model.BillID }, FormMethod.Post))
+{
+    <div>
+        <h4>Bill Number : @Model.BillID</h4>
+        @Html.ActionLink("Back to List", "Index")
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BillAmount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BillAmount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BillDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BillDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BillType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BillType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BillStatus)
+            </dt>
+
+            @if (Model.BillStatus == Apricot.Data.Models.ApricotEnums.BillSatusEnum.PENDING)
+            {
+                <dd class="text-warning">
+                    @Html.DisplayFor(model => model.BillStatus)
+                </dd>
+            }
+            else if (Model.BillStatus == Apricot.Data.Models.ApricotEnums.BillSatusEnum.REJECTED)
+            {
+                <dd class="text-danger">
+                    @Html.DisplayFor(model => model.BillStatus)
+                </dd>
+            }
+            else if (Model.BillStatus == Apricot.Data.Models.ApricotEnums.BillSatusEnum.APPROVED)
+            {
+                <dd class="text-primary">
+                    @Html.DisplayFor(model => model.BillStatus)
+                </dd>
+            }
+            else if (Model.BillStatus == Apricot.Data.Models.ApricotEnums.BillSatusEnum.CLOSED)
+            {
+                <dd class="text-success">
+                    @Html.DisplayFor(model => model.BillStatus)
+                </dd>
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ModeOfPayment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModeOfPayment)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BillSCopy)
+            </dt>
+
+            <dd>
+                Not Avialable
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Manager)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Manager)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FManager)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FManager)
+            </dd>
+
+        </dl>
+    </div>
+
+
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.BillID }) |*@
+        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#departmentModal">Approve</button>
+        <button class="btn btn-danger" type="submit" name="decision" value="no">Reject</button>
+        <button class="btn btn-default" onclick="">Cancel</button>
+    </p>
+
+    <div class="modal fade" id="departmentModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Select Department</h4>
+                    @Html.ActionLink(" ", "Details", "Manager", new { id = Model.BillID })
+                </div>
+                <div class="modal-body">
+                    @Html.DropDownList("Department", departments)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="decision" value="yes">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+}
