@@ -16,15 +16,15 @@ namespace Apricot.Data.Models
 
         [Required]
         [StringLength(100)]
-        [Display(Name="Comment Subject")]
+        [Display(Name = "Comment Subject")]
         public String Cmt_Subject { get; set; }
 
         [StringLength(1000)]
         [Required]
-        [Display(Name="Comment Body")]
+        [Display(Name = "Comment Body")]
         public String Cmt_Body { get; set; }
 
-        [Display(Name="Time Stamp")]
+        [Display(Name = "Time Stamp")]
         [DataType(DataType.DateTime)]
         public DateTime TimeStamp { get; set; }
 
@@ -34,5 +34,10 @@ namespace Apricot.Data.Models
         [ForeignKey("Bill_ID")]
         public virtual Bill Bill { get; private set; }
 
+        [Required]
+        public Int64 Emp_ID { get; set; }
+
+        [ForeignKey("Emp_ID")]
+        public virtual Employee Employee { get; set; }
     }
 }
