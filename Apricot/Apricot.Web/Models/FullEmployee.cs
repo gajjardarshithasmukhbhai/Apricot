@@ -9,6 +9,7 @@ namespace Apricot.Web.Models
 {
     public class FullEmployee
     {
+        [Key]
         public Int64 Emp_ID { get; set; }
 
         [Required]
@@ -38,6 +39,6 @@ namespace Apricot.Web.Models
 
         [Display(Name = "Gender")]
         [Required]
-        public Char Emp_Gender { get; set; }
+        public String Emp_Gender { get; set; }
     }
 }

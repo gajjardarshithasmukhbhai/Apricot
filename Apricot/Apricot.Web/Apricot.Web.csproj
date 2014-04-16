@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\FillBillsViewModel.cs" />
+    <Compile Include="App_Code\FillFullEmployee.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\FManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageEmployeeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,6 +256,9 @@
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\ManageEmployee\Index.cshtml" />
+    <Content Include="Views\ManageEmployee\Create.cshtml" />
+    <Content Include="Views\ManageEmployee\Edit.cshtml" />
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Notifications.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
