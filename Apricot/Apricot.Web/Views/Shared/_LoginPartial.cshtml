@@ -3,15 +3,17 @@
 @{
     String notif = null;
 
-    if (User.Identity.IsAuthenticated)
+    if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
     {
         //Get Notification Subject for Employee to be shown Header
         Apricot.Data.ApricotContext Db = new Apricot.Data.ApricotContext();
         Apricot.Data.Repositories.NotificationRepository notirepo = new Apricot.Data.Repositories.NotificationRepository(Db);
         Apricot.Data.Repositories.EmployeeRepository employeerepo = new Apricot.Data.Repositories.EmployeeRepository(Db);
         var employee = employeerepo.GetByEmpNo(User.Identity.Name);
-
-        notif = notirepo.GetAllByEmpID(employee.Emp_ID).OrderByDescending(e => e.TimeStamp).Select(ns => ns.Ntf_Subject).First();
+        if (employee != null)
+        {
+            notif = notirepo.GetAllByEmpID(employee.Emp_ID).OrderByDescending(e => e.TimeStamp).Select(ns => ns.Ntf_Subject).First();
+        }
     }
 }
 
@@ -26,11 +28,14 @@
                 <a>Hello! @User.Identity.Name </a>
             </li>
             <li>
-                <a style="cursor:pointer; white-space:nowrap; font-size: large;" class="glyphicon glyphicon-globe" data-toggle="popover" data-placement="bottom" 
-                   data-title="Notifications&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" data-content="@notif"></a>
+                @if (!User.IsInRole("Admin"))
+                {
+                    <a style="cursor:pointer; white-space:nowrap; font-size: large;" class="glyphicon glyphicon-globe" data-toggle="popover" data-placement="bottom"
+                       data-title="Notifications&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" data-content="@notif"></a>
+                }
             </li>
             <li>
-                @Html.ActionLink("  ", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "glyphicon glyphicon-cog", @style="font-size:large;" })
+                @Html.ActionLink("  ", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "glyphicon glyphicon-cog", @style = "font-size:large;" })
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>

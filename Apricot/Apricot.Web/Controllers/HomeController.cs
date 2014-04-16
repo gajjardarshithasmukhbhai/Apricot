@@ -14,6 +14,10 @@ namespace Apricot.Web.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            else if(User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Account");
+            }
             else
             {
                 return RedirectToAction("Index", "Employee");

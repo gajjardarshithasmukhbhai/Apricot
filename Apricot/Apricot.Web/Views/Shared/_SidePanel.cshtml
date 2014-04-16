@@ -1,5 +1,5 @@
 ﻿<div class="affix" id="sidebar" data-spy="affix">
-    @if (User.IsInRole("Employee"))
+    @if (User.IsInRole("Employee") && !User.IsInRole("Admin"))
     {
         <div class="row">
             <div class="col-md-12">
@@ -13,7 +13,7 @@
         </div>
     }
 
-    @if (User.IsInRole("Manager"))
+    @if (User.IsInRole("Manager") && !User.IsInRole("Admin"))
     {
         <div class="row">
             <div class="col-md-12">
@@ -25,7 +25,7 @@
         </div>
     }
 
-    @if (User.IsInRole("Finance Manager"))
+    @if (User.IsInRole("Finance Manager") && !User.IsInRole("Admin"))
     {
         <div class="row">
             <div class="col-md-12">

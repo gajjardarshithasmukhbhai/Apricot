@@ -47,7 +47,7 @@ namespace Apricot.Data.Repositories
             if (EmpNo == null)
                 throw new ArgumentNullException();
 
-            return _context.Employees.Where(e => e.Emp_No == EmpNo).Single<Employee>();
+            return _context.Employees.Where(e => e.Emp_No == EmpNo).SingleOrDefault<Employee>();
         }
 
         /// <summary>
