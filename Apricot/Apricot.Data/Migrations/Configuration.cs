@@ -60,15 +60,6 @@ namespace Apricot.Data.Migrations
             success = idManager.AddUserToRole(user.Id, "Admin");
             if (!success) return success;
 
-            success = idManager.AddUserToRole(user.Id, "Employee");
-            if (!success) return success;
-
-            success = idManager.AddUserToRole(user.Id, "Finance Manager");
-            if (!success) return success;
-
-            success = idManager.AddUserToRole(user.Id, "Manager");
-            if (!success) return success;
-
             return success;
         }
     }
