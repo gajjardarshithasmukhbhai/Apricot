@@ -187,7 +187,7 @@ namespace Apricot.Web.App_Code
            
         }
 
-        public object getFManagerBills(string username)
+        public IEnumerable<BillViewModel> getFManagerBills(string username)
         {
             EmployeeRepository employeerepo = new EmployeeRepository(_context);
             BillFMRepository bfmrepo = new BillFMRepository(_context);

@@ -31,7 +31,7 @@
             <div class="col-md-3">
                 @Html.Partial("_SidePanel")
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 container">
                 @RenderBody()
 
                 @*<hr />
@@ -41,15 +41,15 @@
             </div>
         </div>
     </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
+    
     <script>
-        $(function () {
-            $("[data-toggle='popover']").popover();
-        });
+    $(function () {
+        $("[data-toggle='popover']").popover();
+    });
     </script>
-
 </body>
 </html>

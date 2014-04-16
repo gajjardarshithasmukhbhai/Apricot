@@ -1,23 +1,39 @@
 ﻿@using Microsoft.AspNet.Identity
+
+@{
+    String notif = null;
+
+    if (User.Identity.IsAuthenticated)
+    {
+        //Get Notification Subject for Employee to be shown Header
+        Apricot.Data.ApricotContext Db = new Apricot.Data.ApricotContext();
+        Apricot.Data.Repositories.NotificationRepository notirepo = new Apricot.Data.Repositories.NotificationRepository(Db);
+        Apricot.Data.Repositories.EmployeeRepository employeerepo = new Apricot.Data.Repositories.EmployeeRepository(Db);
+        var employee = employeerepo.GetByEmpNo(User.Identity.Name);
+
+        notif = notirepo.GetAllByEmpID(employee.Emp_ID).OrderByDescending(e => e.TimeStamp).Select(ns => ns.Ntf_Subject).First();
+    }
+}
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a>Hello! @User.Identity.Name </a>
-        </li>
-        <li>
-            <a style="cursor:pointer" class="glyphicon glyphicon-globe"
-               data-toggle="popover" data-placement="bottom" data-content="Notifications Not Implemented"></a>
-        </li>
-        <li>
-            @Html.ActionLink("  ", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "glyphicon glyphicon-cog" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a>Hello! @User.Identity.Name </a>
+            </li>
+            <li>
+                <a style="cursor:pointer; white-space:nowrap; font-size: large;" class="glyphicon glyphicon-globe" data-toggle="popover" data-placement="bottom" 
+                   data-title="Notifications&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" data-content="@notif"></a>
+            </li>
+            <li>
+                @Html.ActionLink("  ", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "glyphicon glyphicon-cog", @style="font-size:large;" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else

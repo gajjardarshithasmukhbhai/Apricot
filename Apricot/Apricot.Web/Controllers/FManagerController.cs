@@ -20,7 +20,7 @@ namespace Apricot.Web.Controllers
         {
             var Db = new ApricotContext();
             FillBillsViewModel gbvm = new FillBillsViewModel(Db);
-            var Managerbills = gbvm.getFManagerBills(User.Identity.Name);
+            var Managerbills = gbvm.getFManagerBills(User.Identity.Name).OrderByDescending(bil => bil.BillDate);
 
             return View(Managerbills);
         }

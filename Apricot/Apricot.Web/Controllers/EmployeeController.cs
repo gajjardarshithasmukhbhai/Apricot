@@ -21,7 +21,7 @@ namespace Apricot.Web.Controllers
         {
             var Db = new ApricotContext();
             FillBillsViewModel gbvm = new FillBillsViewModel(Db);
-            var Mybills = gbvm.getMyBills(User.Identity.Name);
+            var Mybills = gbvm.getMyBills(User.Identity.Name).OrderByDescending(bil => bil.BillDate);
 
             return View(Mybills);
         }
@@ -101,7 +101,7 @@ namespace Apricot.Web.Controllers
             NotificationRepository notirepo = new NotificationRepository(Db);
             var emp_Id = Db.Employees.Where(e => e.Emp_No == User.Identity.Name).Select(e => e.Emp_ID).Single();
 
-            var notifications = notirepo.GetAllByEmpID(emp_Id);
+            var notifications = notirepo.GetAllByEmpID(emp_Id).OrderByDescending(ntf => ntf.TimeStamp);
 
             return View(notifications);
         }
