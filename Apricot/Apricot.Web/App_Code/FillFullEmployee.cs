@@ -95,9 +95,9 @@ namespace Apricot.Web.App_Code
         public void EditFullEmployee(FullEmployee model) 
         {
             EmployeeRepository employeeRepo = new EmployeeRepository(_context);
-            if (employeeRepo.GetByEmpID(model.Emp_ID)!=null) 
+            Employee employee = employeeRepo.GetByEmpID(model.Emp_ID);
+            if(employee != null)
             {
-                Employee employee = new Employee();
                 employee.Emp_ID = model.Emp_ID;
                 employee.Emp_Name = model.Emp_Name;
                 employee.Emp_No = model.Emp_No;
@@ -106,9 +106,9 @@ namespace Apricot.Web.App_Code
 
                 employeeRepo.UpdateEmployee(employee);
 
-                Employee_Detail employeeDetail = new Employee_Detail();
+
                 EmployeeDetailRepository employeeDetailRepo = new EmployeeDetailRepository(_context);
-                employeeDetail.Emp_ID = model.Emp_ID;
+                Employee_Detail employeeDetail = employeeDetailRepo.GetByEmpID(employee.Emp_ID);
                 employeeDetail.Emp_Address = model.Emp_Address;
                 employeeDetail.Emp_Contact_No = model.Emp_Contact_No;
                 employeeDetail.Emp_Gender = model.Emp_Gender;
