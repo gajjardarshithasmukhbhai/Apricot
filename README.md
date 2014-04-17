@@ -18,7 +18,8 @@ Architecture
 =============
 
 This is a Three-tier application build with flexibilty and can be easily extended.
-This application is composed of three layers : 
+This application is composed of three layers :
+ 
 1. Business Logic
 2. Data Access Layer
 3. Presentation Layer aka Web interface.
