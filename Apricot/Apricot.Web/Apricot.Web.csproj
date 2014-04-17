@@ -170,7 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\FillBillsViewModel.cs" />
-    <Content Include="App_Code\FillFullEmployee.cs" />
+    <Compile Include="App_Code\FillFullEmployee.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -254,10 +254,12 @@
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\ManageEmployee\Index.cshtml" />
+    <Content Include="Views\ManageEmployee\Create.cshtml" />
+    <Content Include="Views\ManageEmployee\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ManageEmployee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -9,6 +9,7 @@ namespace Apricot.Web.Models
 {
     public class FullEmployee
     {
+        [Key]
         public Int64 Emp_ID { get; set; }
 
         [Required]
