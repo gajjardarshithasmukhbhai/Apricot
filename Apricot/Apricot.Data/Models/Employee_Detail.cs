@@ -28,6 +28,6 @@ namespace Apricot.Data.Models
 
         [Display(Name="Gender")]
         [Required]
-        public Char Emp_Gender { get; set; }
+        public String Emp_Gender { get; set; }
     }
 }

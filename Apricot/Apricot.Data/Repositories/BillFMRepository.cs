@@ -49,6 +49,17 @@ namespace Apricot.Data.Repositories
 
         }
 
+
+        /// <summary>
+        /// Return Bill Finance Manager Bill_FM Identified by billId
+        /// </summary>
+        /// <param name="billId">Bill Id</param>
+        /// <returns>Bill_FM</returns>
+        public Bill_FM GetByBillId(Int64 billId)
+        {
+            return _context.Bill_FMs.First(bfm => bfm.Bill_ID == billId);
+        }
+
         /// <summary>
         /// Get All Bill ID And Corresopnding Bill Finance Manager ID
         /// </summary>

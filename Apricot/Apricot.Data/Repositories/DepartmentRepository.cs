@@ -1,6 +1,7 @@
 ﻿using Apricot.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace Apricot.Data.Repositories
 {
     public class DepartmentRepository
     {
-        Department department;
         private readonly ApricotContext _context;
         /// <summary>
         /// Constructor of DepartmentRepository
@@ -23,6 +23,7 @@ namespace Apricot.Data.Repositories
             }
             _context = context;
         }
+
         /// <summary>
         /// Returns the Departmemt Identified by Specified DepartmentID
         /// </summary>
@@ -30,9 +31,10 @@ namespace Apricot.Data.Repositories
         /// <returns>Department if found else null</returns>
         public Department GetByDepartmentID(Int64 Dept_ID)
         {
-            department = _context.Departments.Find(Dept_ID);
+            var department = _context.Departments.Find(Dept_ID);
             return department;
         }
+
         /// <summary>
         /// Adds Department in Database
         /// </summary>
@@ -47,6 +49,7 @@ namespace Apricot.Data.Repositories
             _context.SaveChanges();
             return;
         }
+
         /// <summary>
         /// Updates existing Department
         /// </summary>
@@ -54,13 +57,13 @@ namespace Apricot.Data.Repositories
         public void UpdateDepartment(Department _dept)
         {
             if (_dept == null)
-            {
-                throw new ArgumentNullException();
-            }
-            department = _dept;
-            _context.SaveChanges();
-            return;
+                throw new ArgumentNullException("dept");
+
+            _context.Entry<Department>(_dept).State = EntityState.Modified;
+
+            _context.SaveChangesAsync();
         }
+
         /// <summary>
         /// Returns Whole Department Table
         /// </summary>
@@ -69,6 +72,7 @@ namespace Apricot.Data.Repositories
         {
             return _context.Departments.ToList<Department>();
         }
+
         /// <summary>
         /// Returns Department Identified By Specified Department Name
         /// </summary>
@@ -76,7 +80,7 @@ namespace Apricot.Data.Repositories
         /// <returns>Department if found else null</returns>
         public Department GetByDepartName(string _dept_name)
         {
-            department = _context.Departments.Where(a => a.Dept_Name == _dept_name).Single();
+            var department = _context.Departments.Where(a => a.Dept_Name == _dept_name).Single();
             return department;
         }
     }

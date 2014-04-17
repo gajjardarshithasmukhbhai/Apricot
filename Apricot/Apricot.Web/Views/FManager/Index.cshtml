@@ -2,14 +2,10 @@
 @using Apricot.Data.Models;
 
 @{
-    ViewBag.Title = "My Bills";
+    ViewBag.Title = "Review Bills";
 }
 
-<h2>My Bills</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Review Bills</h2>
 <table class="table table-bordered">
     <tr class="bg-info">
         <th class="text-center">
@@ -32,9 +28,6 @@
         </th>
         <th class="text-center">
             @Html.DisplayNameFor(model => model.Manager)
-        </th>
-        <th class="text-center">
-            @Html.DisplayNameFor(model => model.FManager)
         </th>
     </tr>
 
@@ -92,13 +85,8 @@
                 @Html.DisplayFor(modelItem => item.Manager)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FManager)
-            </td>
-            @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BillID })
                 @Html.ActionLink("Details", "Details", new { id = item.BillID })
-                @Html.ActionLink("Delete", "Delete", new { id = item.BillID })
-            </td>*@
+            </td>
         </tr>
     }
 
